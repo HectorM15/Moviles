@@ -1,44 +1,87 @@
 package com.example.practica1moviles;
 
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.practica1moviles.Models.DatabaseInitializer;
+import com.example.practica1moviles.Models.Questions;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
-
+    private RadioGroup rg_Ans;
+    private TextView puntuation;
+    private DatabaseInitializer db = new DatabaseInitializer();
+    private Questions [] questions;
+    private int num_question=0,puntuacion=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        db.initializer();
+        setQuestions(num_question);
+        setAnswers(num_question);
+        rg_Ans = (RadioGroup) findViewById(R.id.rg_Answers);
+        puntuation= (TextView)findViewById(R.id.puntuation);
+        puntuation.setText(0);
     }
+
+    public void checkAnswer(View view){
+
+        RadioButton rb_select = (RadioButton)findViewById(rg_Ans.getCheckedRadioButtonId());
+        String selected = (String) rb_select.getText();
+        System.out.println(checkCorrectAnswer(selected,num_question));
+        num_question++;
+        reload(num_question);
+    }
+
+    private void setAnswers(int id){
+
+        RadioButton radioButton1= (RadioButton) findViewById(R.id.rb_Answer1);
+        RadioButton radioButton2= (RadioButton) findViewById(R.id.rb_Answer2);
+        RadioButton radioButton3= (RadioButton) findViewById(R.id.rb_Answer3);
+        RadioButton radioButton4= (RadioButton) findViewById(R.id.rb_Answer4);
+        radioButton1.setText(questions[id].arr_answer[0].getDs_answer());
+
+        radioButton2.setText(questions[id].arr_answer[1].getDs_answer());
+        radioButton3.setText(questions[id].arr_answer[2].getDs_answer());
+        radioButton4.setText(questions[id].arr_answer[3].getDs_answer());
+    }
+
+    private void setQuestions(int id){
+
+        questions= db.getArr_questions();
+        TextView question = (TextView) findViewById(R.id.message);
+        question.setText(questions[id].getDs_question());
+
+    }
+
+    private boolean checkCorrectAnswer(String selected,int id){
+
+        for (int i = 0; i < questions[id].arr_answer.length; i++) {
+            if (selected.equals(questions[id].arr_answer[i].getDs_answer()) &&questions[id].arr_answer[i].getIt_correct()){
+                puntuacion+=questions[id].getNm_puntuacion();
+                return true;
+            }
+        }
+        puntuacion-=questions[id].getNm_puntuacion();
+        return false;
+    }
+
+    private void reload(int id){
+        setQuestions(id);
+        setAnswers(id);
+        puntuation.setText(puntuacion);
+    }
+
 
 }
