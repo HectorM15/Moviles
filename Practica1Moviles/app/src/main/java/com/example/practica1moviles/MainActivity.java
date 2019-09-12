@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RadioGroup rg_Ans;
-    private TextView puntuation;
     private DatabaseInitializer db = new DatabaseInitializer();
     private Questions [] questions;
     private int num_question=0,puntuacion=0;
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setQuestions(num_question);
         setAnswers(num_question);
         rg_Ans = (RadioGroup) findViewById(R.id.rg_Answers);
-        puntuation= (TextView)findViewById(R.id.puntuation);
-        puntuation.setText(0);
     }
 
     public void checkAnswer(View view){
@@ -40,7 +37,12 @@ public class MainActivity extends AppCompatActivity {
         RadioButton rb_select = (RadioButton)findViewById(rg_Ans.getCheckedRadioButtonId());
         String selected = (String) rb_select.getText();
         System.out.println(checkCorrectAnswer(selected,num_question));
-        num_question++;
+
+        if (num_question < 4) {
+            num_question++;
+        }else{
+            finish();
+        }
         reload(num_question);
     }
 
@@ -63,12 +65,14 @@ public class MainActivity extends AppCompatActivity {
         TextView question = (TextView) findViewById(R.id.message);
         question.setText(questions[id].getDs_question());
 
+        TextView puntuation= (TextView)findViewById(R.id.int_punt);
+        puntuation.setText("Puntuacion actual: " + puntuacion);
     }
 
     private boolean checkCorrectAnswer(String selected,int id){
 
         for (int i = 0; i < questions[id].arr_answer.length; i++) {
-            if (selected.equals(questions[id].arr_answer[i].getDs_answer()) &&questions[id].arr_answer[i].getIt_correct()){
+            if (selected.equals(questions[id].arr_answer[i].getDs_answer()) && questions[id].arr_answer[i].getIt_correct()){
                 puntuacion+=questions[id].getNm_puntuacion();
                 return true;
             }
@@ -80,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private void reload(int id){
         setQuestions(id);
         setAnswers(id);
-        puntuation.setText(puntuacion);
     }
 
 

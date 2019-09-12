@@ -8,11 +8,11 @@ public class DatabaseInitializer {
 
     public void initializer(){
 
-        arr_questions[0] = new Questions("¿Cuál de las siguientes tiene más neuronas?",false,0);
-        arr_questions[1] = new Questions("¿Cuál fue el primer emperador romano de origen hispano?",false,0);
-        arr_questions[2] = new Questions("¿Dónde se produce la respiración celular?",false,0);
-        arr_questions[3] = new Questions("¿Cuánto mide el Everest?",false,0);
-        arr_questions[4] = new Questions("¿De qué continente son originarios los ornitorrincos?",false,0);
+        arr_questions[0] = new Questions("¿Cuál de las siguientes tiene más neuronas?",false,1);
+        arr_questions[1] = new Questions("¿Cuál fue el primer emperador romano de origen hispano?",false,2);
+        arr_questions[2] = new Questions("¿Dónde se produce la respiración celular?",false,3);
+        arr_questions[3] = new Questions("¿Cuánto mide el Everest?",false,4);
+        arr_questions[4] = new Questions("¿De qué continente son originarios los ornitorrincos?",false,5);
 
         //PREGUNTA 1
         arr_questions[0].arr_answer[0]= new Answer("Gato",false);
@@ -39,10 +39,10 @@ public class DatabaseInitializer {
         arr_questions[3].arr_answer[3]= new Answer("9 kilómetros",false);
 
         //PREGUNTA 5
-        arr_questions[4].arr_answer[0]= new Answer("Australia",false);
+        arr_questions[4].arr_answer[0]= new Answer("Australia",true);
         arr_questions[4].arr_answer[1]= new Answer("Europa",false);
         arr_questions[4].arr_answer[2]= new Answer("America",false);
-        arr_questions[4].arr_answer[3]= new Answer("Africa",true);
+        arr_questions[4].arr_answer[3]= new Answer("Africa",false);
     }
 
     public Questions[] getArr_questions() {
