@@ -16,8 +16,13 @@ public class FinalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
         Intent mIntent = getIntent();
+
         int puntuation = mIntent.getIntExtra("Puntuation", 0);
-        System.out.println(puntuation);
+        setPuntuation(puntuation);
+    }
+
+
+    private void setPuntuation(int puntuation){
         TextView dp_punt = findViewById(R.id.displayPunt);
         dp_punt.setText(""+puntuation);
     }
