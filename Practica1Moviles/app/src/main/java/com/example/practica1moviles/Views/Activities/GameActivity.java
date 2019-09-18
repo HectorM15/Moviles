@@ -1,11 +1,7 @@
-package com.example.practica1moviles;
+package com.example.practica1moviles.Views.Activities;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,10 +9,9 @@ import android.widget.TextView;
 
 import com.example.practica1moviles.Models.DatabaseInitializer;
 import com.example.practica1moviles.Models.Questions;
+import com.example.practica1moviles.R;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
     private RadioGroup rg_Ans;
     private DatabaseInitializer db = new DatabaseInitializer();
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game);
         db.initializer();
         setQuestions(num_question);
         setAnswers(num_question);
