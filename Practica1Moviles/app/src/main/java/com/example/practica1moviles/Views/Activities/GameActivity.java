@@ -1,5 +1,6 @@
 package com.example.practica1moviles.Views.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -36,7 +37,10 @@ public class GameActivity extends AppCompatActivity {
         if (num_question < 4) {
             num_question++;
         }else{
-            finish();
+            Intent finalView = new Intent(GameActivity.this, FinalActivity.class);
+            finalView.putExtra("Puntuation", this.puntuacion);
+            finishAffinity();
+            startActivity(finalView);
         }
         reload(num_question);
     }
