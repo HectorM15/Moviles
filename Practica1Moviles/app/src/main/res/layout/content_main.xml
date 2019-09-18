@@ -17,7 +17,7 @@
         android:layout_marginEnd="176dp"
         android:layout_marginBottom="546dp"
         android:padding="30dp"
-        android:text="JUEGO DE PREGUNTAS RANDOM"
+        android:text="@string/title_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,10 +31,24 @@
         android:layout_marginTop="97dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="371dp"
-        android:text="Comenzar"
+        android:text="@string/begin_game"
         android:onClick="beginGame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="84dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="176dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBeginGame"
+        app:srcCompat="@drawable/dali" />
 </android.support.constraint.ConstraintLayout>

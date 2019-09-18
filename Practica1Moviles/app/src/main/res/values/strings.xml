@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Juego de preguntas</string>
+    <string name="begin_game">Comenzar</string>
+    <string name="title_game">JUEGO DE PREGUNTAS RANDOM</string>
     <string name="title_activity_main">MainActivity</string>
 </resources>
