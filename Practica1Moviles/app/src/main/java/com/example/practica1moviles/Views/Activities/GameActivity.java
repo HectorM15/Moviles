@@ -32,7 +32,7 @@ public class GameActivity extends AppCompatActivity {
 
         RadioButton rb_select = (RadioButton)findViewById(rg_Ans.getCheckedRadioButtonId());
         String selected = (String) rb_select.getText();
-
+        checkCorrectAnswer(selected,num_question);
 
         if (num_question < 4) {
             num_question++;
