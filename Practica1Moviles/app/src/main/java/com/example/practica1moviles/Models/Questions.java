@@ -17,6 +17,14 @@ public class Questions {
         this.arr_answer = new Answer[4];
     }
 
+    public Boolean getHas_img() {
+        return has_img;
+    }
+
+    public void setHas_img(Boolean has_img) {
+        this.has_img = has_img;
+    }
+
     public String getDs_question() {
         return ds_question;
     }
