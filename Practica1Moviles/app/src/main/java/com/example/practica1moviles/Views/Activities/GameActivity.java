@@ -30,10 +30,12 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+
         cl = findViewById(R.id.content_layout);
         rg_Ans = (RadioGroup) findViewById(R.id.rg_Answers);
         
-        setContentView(R.layout.activity_game);
+
         db.initializer();
         random = randomizer.nextInt(9);
         questions= db.getArr_questions();
