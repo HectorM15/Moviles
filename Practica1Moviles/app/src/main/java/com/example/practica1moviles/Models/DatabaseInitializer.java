@@ -55,9 +55,9 @@ public class DatabaseInitializer {
 
         //PREGUNTA 6
         arr_questions[5].arr_answer[0]= new Answer("Dali",true);
-        arr_questions[5].arr_answer[1]= new Answer("Van Gogh",false);
-        arr_questions[5].arr_answer[2]= new Answer("Velázquez",false);
-        arr_questions[5].arr_answer[3]= new Answer("Piccaso",false);
+        arr_questions[5].arr_answer[1]= new Answer("VG",false);
+        arr_questions[5].arr_answer[2]= new Answer("Velazquez",false);
+        arr_questions[5].arr_answer[3]= new Answer("Picasso",false);
 
         arr_questions[5].arr_answer[0].setImg(R.drawable.dali);
         arr_questions[5].arr_answer[1].setImg(R.drawable.vg);
@@ -67,8 +67,8 @@ public class DatabaseInitializer {
         //PREGUNTA 7
         arr_questions[6].arr_answer[0]= new Answer("Dali",false);
         arr_questions[6].arr_answer[1]= new Answer("VG",false);
-        arr_questions[6].arr_answer[2]= new Answer("Velázquez",false);
-        arr_questions[6].arr_answer[3]= new Answer("Piccaso",true);
+        arr_questions[6].arr_answer[2]= new Answer("Velazquez",false);
+        arr_questions[6].arr_answer[3]= new Answer("Picasso",true);
 
 
         arr_questions[6].arr_answer[0].setImg(R.drawable.dali);
@@ -79,8 +79,8 @@ public class DatabaseInitializer {
         //PREGUNTA 8
         arr_questions[7].arr_answer[0]= new Answer("Dali",false);
         arr_questions[7].arr_answer[1]= new Answer("VG",true);
-        arr_questions[7].arr_answer[2]= new Answer("Velázquez",false);
-        arr_questions[7].arr_answer[3]= new Answer("Piccaso",false);
+        arr_questions[7].arr_answer[2]= new Answer("Velazquez",false);
+        arr_questions[7].arr_answer[3]= new Answer("Picasso",false);
 
         arr_questions[7].arr_answer[0].setImg(R.drawable.dali);
         arr_questions[7].arr_answer[1].setImg(R.drawable.vg);
@@ -89,9 +89,9 @@ public class DatabaseInitializer {
 
         //PREGUNTA 9
         arr_questions[8].arr_answer[0]= new Answer("Dali",false);
-        arr_questions[8].arr_answer[1]= new Answer("Van Gogh",false);
-        arr_questions[8].arr_answer[2]= new Answer("Velázquez",true);
-        arr_questions[8].arr_answer[3]= new Answer("Piccaso",false);
+        arr_questions[8].arr_answer[1]= new Answer("VG",false);
+        arr_questions[8].arr_answer[2]= new Answer("Velazquez",true);
+        arr_questions[8].arr_answer[3]= new Answer("Picasso",false);
 
         arr_questions[8].arr_answer[0].setImg(R.drawable.dali);
         arr_questions[8].arr_answer[1].setImg(R.drawable.vg);

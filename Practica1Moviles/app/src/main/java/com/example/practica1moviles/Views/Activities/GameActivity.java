@@ -97,6 +97,8 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         puntuacion-=questions[id].getNm_puntuacion();
+        Toast.makeText(getApplicationContext(), "Fallaste",
+                Toast.LENGTH_LONG).show();
         return false;
     }
 
