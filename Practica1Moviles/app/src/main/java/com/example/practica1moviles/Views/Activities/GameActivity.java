@@ -110,7 +110,7 @@ public class GameActivity extends AppCompatActivity {
        int random = randomizer.nextInt(10);
        if(questions[random].getIt_answered())
            random = getRandomQuestionNotAnswered();
-        System.out.println(random);
+       // System.out.println(random);
         return random;
     }
 
