@@ -57,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
         if (questions[id].getHas_img()) {
             cl.getViewById(R.id.questions_layout);
         } else {
-            //setContentView(R.layout.questions);
+            //setContentView(R.layout.content_questions);
             RadioButton radioButton1 = (RadioButton) findViewById(R.id.rb_Answer1);
             RadioButton radioButton2 = (RadioButton) findViewById(R.id.rb_Answer2);
             RadioButton radioButton3 = (RadioButton) findViewById(R.id.rb_Answer3);
@@ -94,6 +94,11 @@ public class GameActivity extends AppCompatActivity {
     private void reload(int id){
         setQuestions(id);
         setAnswers(id);
+    }
+
+    public void checkImageAnswer(View view){
+
+
     }
 
     private int getRandomQuestionNotAnswered(){

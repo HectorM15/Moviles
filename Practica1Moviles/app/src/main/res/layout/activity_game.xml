@@ -32,4 +32,6 @@
 
     </android.support.constraint.ConstraintLayout>
 
+    <include layout="@layout/content_questions_images" />
+    <include layout="@layout/content_questions" />
 </android.support.constraint.ConstraintLayout>
