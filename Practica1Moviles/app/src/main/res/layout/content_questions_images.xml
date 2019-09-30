@@ -9,19 +9,6 @@
     tools:context=".Views.Activities.GameActivity"
     tools:showIn="@layout/activity_game">
 
-    <TextView
-        android:id="@+id/int_punt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="113dp"
-        android:layout_marginBottom="84dp"
-        android:text="Puntuacion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Check" />
 
     <ImageButton
         android:id="@+id/answer_2"
