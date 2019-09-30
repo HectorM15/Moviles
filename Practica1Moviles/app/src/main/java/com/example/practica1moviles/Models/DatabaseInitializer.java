@@ -67,7 +67,7 @@ public class DatabaseInitializer {
         //PREGUNTA 7
         arr_questions[6].arr_answer[0]= new Answer("Dali",false);
         arr_questions[6].arr_answer[1]= new Answer("VG",false);
-        arr_questions[6].arr_answer[2]= new Answer("Velázquez",true);
+        arr_questions[6].arr_answer[2]= new Answer("Velázquez",false);
         arr_questions[6].arr_answer[3]= new Answer("Piccaso",true);
 
 

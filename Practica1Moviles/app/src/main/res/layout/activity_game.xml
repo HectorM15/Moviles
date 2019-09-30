@@ -41,7 +41,6 @@
         layout="@layout/content_questions"
         android:id="@+id/content_radio"
         android:visibility="visible"/>
-
     />
 
     <TextView
