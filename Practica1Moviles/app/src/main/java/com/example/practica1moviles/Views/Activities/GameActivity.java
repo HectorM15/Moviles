@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
         db.initializer();
-        random = randomizer.nextInt(10);
+        random = randomizer.nextInt(9);
         questions= db.getArr_questions();
         setQuestions(random);
         setAnswers(random);
@@ -107,7 +107,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private int getRandomQuestionNotAnswered(){
-       int random = randomizer.nextInt(10);
+       int random = randomizer.nextInt(9);
        if(questions[random].getIt_answered())
            random = getRandomQuestionNotAnswered();
        // System.out.println(random);
