@@ -44,6 +44,7 @@ public class GameActivity extends AppCompatActivity {
     public void checkAnswer(View view){
         RadioButton rb_select = (RadioButton)findViewById(rg_Ans.getCheckedRadioButtonId());
         String selected = (String) rb_select.getText();
+        rg_Ans.clearCheck();
         checkCorrectAnswer(selected,random);
         goToNextQuestion();
     }
@@ -64,8 +65,6 @@ public class GameActivity extends AppCompatActivity {
                 findViewById(R.id.content_images).setVisibility(View.GONE);
                 findViewById(R.id.content_radio).setVisibility(View.VISIBLE);
             }
-            rg_Ans.clearCheck();
-            //setContentView(R.layout.content_questions);
             RadioButton radioButton1 = (RadioButton) findViewById(R.id.rb_Answer1);
             RadioButton radioButton2 = (RadioButton) findViewById(R.id.rb_Answer2);
             RadioButton radioButton3 = (RadioButton) findViewById(R.id.rb_Answer3);
