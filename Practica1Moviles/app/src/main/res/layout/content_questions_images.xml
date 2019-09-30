@@ -27,6 +27,8 @@
         android:id="@+id/answer_2"
         android:layout_width="80dp"
         android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" android:layout_centerInParent="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.737"
@@ -35,12 +37,15 @@
         app:layout_constraintVertical_bias="0.314"
         app:srcCompat="@drawable/dali"
         android:onClick="checkImageAnswer"
+        android:tag="Dali"
         />
 
     <ImageButton
         android:id="@+id/answer_4"
         android:layout_width="80dp"
         android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" android:layout_centerInParent="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.737"
@@ -49,12 +54,15 @@
         app:layout_constraintVertical_bias="0.587"
         app:srcCompat="@drawable/vg"
         android:onClick="checkImageAnswer"
+        android:tag="VG"
         />
 
     <ImageButton
         android:id="@+id/answer_3"
         android:layout_width="80dp"
         android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" android:layout_centerInParent="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.256"
@@ -63,12 +71,15 @@
         app:layout_constraintVertical_bias="0.587"
         app:srcCompat="@drawable/picasso"
         android:onClick="checkImageAnswer"
+        android:tag="Picasso"
         />
 
     <ImageButton
         android:id="@+id/answer_1"
         android:layout_width="80dp"
         android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" android:layout_centerInParent="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
@@ -77,6 +88,7 @@
         app:layout_constraintVertical_bias="0.314"
         app:srcCompat="@drawable/velazquez"
         android:onClick="checkImageAnswer"
+        android:tag="Velazquez"
         />
 
 </android.support.constraint.ConstraintLayout>

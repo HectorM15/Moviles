@@ -65,10 +65,10 @@ public class DatabaseInitializer {
         arr_questions[5].arr_answer[3].setImg(R.drawable.picasso);
 
         //PREGUNTA 7
-        arr_questions[6].arr_answer[0]= new Answer("Dali",true);
-        arr_questions[6].arr_answer[1]= new Answer("Van Gogh",false);
-        arr_questions[6].arr_answer[2]= new Answer("Otra vez Van Gogh",false);
-        arr_questions[6].arr_answer[3]= new Answer("Piccaso",false);
+        arr_questions[6].arr_answer[0]= new Answer("Dali",false);
+        arr_questions[6].arr_answer[1]= new Answer("VG",false);
+        arr_questions[6].arr_answer[2]= new Answer("Otra vez Van Gogh",true);
+        arr_questions[6].arr_answer[3]= new Answer("Piccaso",true);
 
 
         arr_questions[6].arr_answer[0].setImg(R.drawable.dali);
@@ -78,7 +78,7 @@ public class DatabaseInitializer {
 
         //PREGUNTA 8
         arr_questions[7].arr_answer[0]= new Answer("Dali",true);
-        arr_questions[7].arr_answer[1]= new Answer("Van Gogh",false);
+        arr_questions[7].arr_answer[1]= new Answer("VG",true);
         arr_questions[7].arr_answer[2]= new Answer("Otra vez Van Gogh",false);
         arr_questions[7].arr_answer[3]= new Answer("Piccaso",false);
 

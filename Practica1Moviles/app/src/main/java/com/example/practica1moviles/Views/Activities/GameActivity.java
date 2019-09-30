@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -43,17 +44,7 @@ public class GameActivity extends AppCompatActivity {
         RadioButton rb_select = (RadioButton)findViewById(rg_Ans.getCheckedRadioButtonId());
         String selected = (String) rb_select.getText();
         checkCorrectAnswer(selected,random);
-        random = getRandomQuestionNotAnswered();
-
-        if (num_question < 4) {
-            num_question++;
-            reload(random);
-        }else{
-            Intent finalView = new Intent(GameActivity.this, FinalActivity.class);
-            finalView.putExtra("Puntuation", this.puntuacion);
-            finishAffinity();
-            startActivity(finalView);
-        }
+        goToNextQuestion();
     }
 
     private void setAnswers(int id) {
@@ -62,10 +53,10 @@ public class GameActivity extends AppCompatActivity {
                 findViewById(R.id.content_images).setVisibility(View.VISIBLE);
                 findViewById(R.id.content_radio).setVisibility(View.GONE);
             }
-            ImageView answer1 = (ImageView) findViewById(R.id.answer_1);
-            ImageView answer2 = (ImageView) findViewById(R.id.answer_2);
-            ImageView answer3 = (ImageView) findViewById(R.id.answer_3);
-            ImageView answer4 = (ImageView) findViewById(R.id.answer_4);
+            ImageButton answer1 = (ImageButton) findViewById(R.id.answer_1);
+            ImageButton answer2 = (ImageButton) findViewById(R.id.answer_2);
+            ImageButton answer3 = (ImageButton) findViewById(R.id.answer_3);
+            ImageButton answer4 = (ImageButton) findViewById(R.id.answer_4);
         } else {
             if (findViewById(R.id.content_radio).getVisibility() != View.VISIBLE) {
                 findViewById(R.id.content_images).setVisibility(View.GONE);
@@ -110,8 +101,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void checkImageAnswer(View view){
-
-
+        String selected = view.getTag().toString();
+        checkCorrectAnswer(selected,random);
+        goToNextQuestion();
     }
 
     private int getRandomQuestionNotAnswered(){
@@ -120,6 +112,20 @@ public class GameActivity extends AppCompatActivity {
            random = getRandomQuestionNotAnswered();
         System.out.println(random);
         return random;
+    }
+
+    private void goToNextQuestion(){
+        random = getRandomQuestionNotAnswered();
+
+        if (num_question < 4) {
+            num_question++;
+            reload(random);
+        }else{
+            Intent finalView = new Intent(GameActivity.this, FinalActivity.class);
+            finalView.putExtra("Puntuation", this.puntuacion);
+            finishAffinity();
+            startActivity(finalView);
+        }
     }
 
 }
