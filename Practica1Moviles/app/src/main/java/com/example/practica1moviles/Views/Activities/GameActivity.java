@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.practica1moviles.Models.DatabaseInitializer;
 import com.example.practica1moviles.Models.Questions;
@@ -48,6 +49,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void setAnswers(int id) {
+
         if (questions[id].getHas_img()) {
             if (findViewById(R.id.content_images).getVisibility() != View.VISIBLE) {
                 findViewById(R.id.content_images).setVisibility(View.VISIBLE);
@@ -62,6 +64,7 @@ public class GameActivity extends AppCompatActivity {
                 findViewById(R.id.content_images).setVisibility(View.GONE);
                 findViewById(R.id.content_radio).setVisibility(View.VISIBLE);
             }
+            rg_Ans.clearCheck();
             //setContentView(R.layout.content_questions);
             RadioButton radioButton1 = (RadioButton) findViewById(R.id.rb_Answer1);
             RadioButton radioButton2 = (RadioButton) findViewById(R.id.rb_Answer2);
@@ -88,6 +91,8 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < questions[id].arr_answer.length; i++) {
             if (selected.equals(questions[id].arr_answer[i].getDs_answer()) && questions[id].arr_answer[i].getIt_correct()){
                 puntuacion+=questions[id].getNm_puntuacion();
+                Toast.makeText(getApplicationContext(), "Acertaste",
+                        Toast.LENGTH_LONG).show();
                 return true;
             }
         }
