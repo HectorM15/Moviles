@@ -32,6 +32,15 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <include layout="@layout/content_questions_images" />
-    <include layout="@layout/content_questions" />
+    <include
+        layout="@layout/content_questions_images"
+        android:id="@+id/content_images"
+        android:visibility="gone"/>
+    />
+    <include
+        layout="@layout/content_questions"
+        android:id="@+id/content_radio"
+        android:visibility="visible"/>
+
+    />
 </android.support.constraint.ConstraintLayout>

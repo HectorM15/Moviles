@@ -1,10 +1,12 @@
 package com.example.practica1moviles.Views.Activities;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         db.initializer();
         random = randomizer.nextInt(10);
+        questions= db.getArr_questions();
         setQuestions(random);
         setAnswers(random);
         rg_Ans = (RadioGroup) findViewById(R.id.rg_Answers);
@@ -55,8 +58,19 @@ public class GameActivity extends AppCompatActivity {
 
     private void setAnswers(int id) {
         if (questions[id].getHas_img()) {
-            cl.getViewById(R.id.questions_layout);
+            if (findViewById(R.id.content_images).getVisibility() != View.VISIBLE) {
+                findViewById(R.id.content_images).setVisibility(View.VISIBLE);
+                findViewById(R.id.content_radio).setVisibility(View.GONE);
+            }
+            ImageView answer1 = (ImageView) findViewById(R.id.answer_1);
+            ImageView answer2 = (ImageView) findViewById(R.id.answer_2);
+            ImageView answer3 = (ImageView) findViewById(R.id.answer_3);
+            ImageView answer4 = (ImageView) findViewById(R.id.answer_4);
         } else {
+            if (findViewById(R.id.content_radio).getVisibility() != View.VISIBLE) {
+                findViewById(R.id.content_images).setVisibility(View.GONE);
+                findViewById(R.id.content_radio).setVisibility(View.VISIBLE);
+            }
             //setContentView(R.layout.content_questions);
             RadioButton radioButton1 = (RadioButton) findViewById(R.id.rb_Answer1);
             RadioButton radioButton2 = (RadioButton) findViewById(R.id.rb_Answer2);
@@ -71,7 +85,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     private void setQuestions(int id){
-        questions= db.getArr_questions();
         TextView question = (TextView) findViewById(R.id.message);
         question.setText(questions[id].getDs_question());
 
