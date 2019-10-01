@@ -12,15 +12,15 @@ public class DatabaseInitializer {
 
     public void initializer(){
 
-        arr_questions[0] = new Questions("¿Cuál de las siguientes tiene más neuronas?",false,1,false);
+        arr_questions[0] = new Questions("¿Cuál de las siguientes tiene más neuronas?",false,2,false);
         arr_questions[1] = new Questions("¿Cuál fue el primer emperador romano de origen hispano?",false,2,false);
-        arr_questions[2] = new Questions("¿Dónde se produce la respiración celular?",false,3,false);
-        arr_questions[3] = new Questions("¿Cuánto mide el Everest?",false,4,false);
-        arr_questions[4] = new Questions("¿De qué continente son originarios los ornitorrincos?",false,5,false);
-        arr_questions[5] = new Questions("¿Cual obra es de Dalí?",false,5,true);
-        arr_questions[6] = new Questions("¿Cual obra es de Piccaso?",false,5,true);
-        arr_questions[7] = new Questions("¿Cual obra es de Van Gogh?",false,5,true);
-        arr_questions[8] = new Questions("¿Cual obra es de Velázquez?",false,5,true);
+        arr_questions[2] = new Questions("¿Dónde se produce la respiración celular?",false,2,false);
+        arr_questions[3] = new Questions("¿Cuánto mide el Everest?",false,2,false);
+        arr_questions[4] = new Questions("¿De qué continente son originarios los ornitorrincos?",false,2,false);
+        arr_questions[5] = new Questions("¿Cual obra es de Dalí?",false,2,true);
+        arr_questions[6] = new Questions("¿Cual obra es de Piccaso?",false,2,true);
+        arr_questions[7] = new Questions("¿Cual obra es de Van Gogh?",false,2,true);
+        arr_questions[8] = new Questions("¿Cual obra es de Velázquez?",false,2,true);
 
 
         //PREGUNTA 1
