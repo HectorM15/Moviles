@@ -53,4 +53,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnBeginGame"
         app:srcCompat="@drawable/dali" />
+
+    <ImageButton
+        android:id="@+id/options"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="335dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="599dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:onClick="goToOptions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/engranaje"/>
 </android.support.constraint.ConstraintLayout>

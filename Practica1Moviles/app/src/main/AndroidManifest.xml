@@ -23,6 +23,11 @@
         <activity
             android:name=".Views.Activities.GameActivity"
             android:label="@string/app_name"></activity>
+        <activity
+            android:name=".Views.Activities.OptionsActivity"
+            android:label="@string/app_name">
+        </activity>
     </application>
+
 
 </manifest>

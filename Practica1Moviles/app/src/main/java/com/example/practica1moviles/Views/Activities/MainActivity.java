@@ -1,6 +1,11 @@
 package com.example.practica1moviles.Views.Activities;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.OnLifecycleEvent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,14 +25,54 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String color = preferences.getString("color","");
+        if (!color.isEmpty())
+        changeColor(color);
       //  Button btn_begin = findViewById(R.id.btnBeginGame);
+    }
 
+    public void onResume () {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String color = preferences.getString("color","");
+        if (!color.isEmpty())
+            changeColor(color);
+    }
 
+    public void changeColor(String color){
+        View view1 = this.getWindow().getDecorView();
+        switch (color){
+            case "Blanco":
+                view1.setBackgroundColor(Color.WHITE);
+                break;
+            case "Rojo":
+                view1.setBackgroundColor(Color.RED);
+                break;
+            case "Amarillo":
+                view1.setBackgroundColor(Color.YELLOW);
+                break;
+            case "Verde":
+                view1.setBackgroundColor(Color.GREEN);
+                break;
+            case "Azul":
+                view1.setBackgroundColor(Color.BLUE);
+                break;
+            case "Negro":
+                view1.setBackgroundColor(Color.BLACK);
+                break;
+        }
     }
 
     public void beginGame(View view){
         Intent intent2 = new Intent (getApplicationContext(), GameActivity.class);
         startActivityForResult(intent2, 0);
+    }
+
+
+    public void goToOptions (View view){
+        Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
+        startActivity(intent);
     }
 
 }

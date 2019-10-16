@@ -4,4 +4,15 @@
     <string name="puntuation">Puntuacion</string>
     <string name="title_game">JUEGO DE PREGUNTAS RANDOM</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="saveButton">Guardar cambios</string>
+    <string name="bckc_setting">Elija el color de fondo</string>
+
+    <string-array name="colours">
+        <item>Blanco</item>
+        <item>Rojo</item>
+        <item>Amarillo</item>
+        <item>Verde</item>
+        <item>Azul</item>
+        <item>Negro</item>
+    </string-array>
 </resources>
