@@ -1,41 +1,41 @@
 package com.example.practica1moviles.Views.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.practica1moviles.Models.User;
 import com.example.practica1moviles.Models.database.UserDBAccess;
 import com.example.practica1moviles.R;
 
-public class FinalActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
-    private User user;
     private UserDBAccess dbAccess;
+    private EditText name,nametag,password;
+    private Button confirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_final);
-        Intent mIntent = getIntent();
-
-        int puntuation = mIntent.getIntExtra("Puntuation", 0);
-
-        this.dbAccess = UserDBAccess.get(this);
-        String unametag = mIntent.getStringExtra("user");
-        this.user= dbAccess.getUser(unametag);
-        setPuntuation(puntuation);
+        setContentView(R.layout.activity_sign_up);
 
         SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String color = preferences.getString("color","");
         if (!color.isEmpty())
             changeColor(color);
-    }
 
+        this.dbAccess = UserDBAccess.get(this);
+
+        this.nametag = findViewById(R.id.register_nametag);
+        this.name = findViewById(R.id.register_name);
+        this.password = findViewById(R.id.register_password);
+        this.confirm = findViewById(R.id.register_button);
+    }
 
     public void changeColor(String color){
         View view1 = this.getWindow().getDecorView();
@@ -61,17 +61,22 @@ public class FinalActivity extends AppCompatActivity {
         }
     }
 
+    public void saveUser(View view){
+        String unametag = this.nametag.getText().toString();
+        String uname = this.name.getText().toString();
+        String upassword = this.password.getText().toString();
 
-    private void setPuntuation(int puntuation){
-        TextView dp_punt = findViewById(R.id.displayPunt);
-        dp_punt.setText(""+puntuation);
+        if (this.dbAccess.getUser(unametag)==null) {
+            if (!unametag.isEmpty() && !uname.isEmpty() && !upassword.isEmpty()) {
+                User newuser = new User(unametag, uname, upassword, 0);
+                this.dbAccess.addUser(newuser);
+                Toast.makeText(getApplicationContext(), "Se ha creado su usuario satisfactoriamente",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Error al rellenar los campos",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
-    public void exit (View view){
-        finish();
-    }
-
-    public void restart(View view){
-        startActivity(new Intent(FinalActivity.this, GameActivity.class));
-    }
 }

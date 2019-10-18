@@ -6,6 +6,12 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="saveButton">Guardar cambios</string>
     <string name="bckc_setting">Elija el color de fondo</string>
+    <string name="register_nametag">Introduzca su nombre de usuario</string>
+    <string name="register_name">Introduzca su nombre</string>
+    <string name="register_password">Introduzca su contraseña</string>
+
+    <string name="login_nametag">Introduzca su usuario</string>
+    <string name="login_password">Introduzca su contraseña</string>
 
     <string-array name="colours">
         <item>Blanco</item>

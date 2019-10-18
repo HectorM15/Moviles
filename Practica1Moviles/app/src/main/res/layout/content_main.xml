@@ -8,6 +8,18 @@
     tools:context=".Views.Activities.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <Button
+        android:id="@+id/btnRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:onClick="goToRanking"
+        android:text="@string/begin_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Rankings" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="247dp"
@@ -70,4 +82,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/engranaje"/>
+
 </android.support.constraint.ConstraintLayout>

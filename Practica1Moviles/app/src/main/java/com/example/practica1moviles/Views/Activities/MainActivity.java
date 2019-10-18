@@ -14,9 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.practica1moviles.Models.User;
+import com.example.practica1moviles.Models.database.UserDBAccess;
 import com.example.practica1moviles.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    private User user;
+    private UserDBAccess dbAccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        this.dbAccess = UserDBAccess.get(this);
+        Intent mIntent = getIntent();
+        String unametag = mIntent.getStringExtra("user");
+        this.user= dbAccess.getUser(unametag);
         SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String color = preferences.getString("color","");
         if (!color.isEmpty())
@@ -66,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void beginGame(View view){
         Intent intent2 = new Intent (getApplicationContext(), GameActivity.class);
+        intent2.putExtra("user",this.user.getNametag());
         startActivityForResult(intent2, 0);
     }
 
@@ -75,4 +84,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToRanking (View view){
+        Intent intent = new Intent (getApplicationContext(), RankingActivity.class);
+        startActivity(intent);
+    }
 }

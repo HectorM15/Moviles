@@ -18,12 +18,16 @@ import android.widget.Toast;
 
 import com.example.practica1moviles.Models.DatabaseInitializer;
 import com.example.practica1moviles.Models.Questions;
+import com.example.practica1moviles.Models.User;
+import com.example.practica1moviles.Models.database.UserDBAccess;
 import com.example.practica1moviles.R;
 
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
+    private User user;
+    private UserDBAccess dbAccess;
     private RadioGroup rg_Ans;
     private DatabaseInitializer db = new DatabaseInitializer();
     private Questions [] questions;
@@ -37,7 +41,11 @@ public class GameActivity extends AppCompatActivity {
 
         cl = findViewById(R.id.content_layout);
         rg_Ans = (RadioGroup) findViewById(R.id.rg_Answers);
-        
+
+        this.dbAccess = UserDBAccess.get(this);
+        Intent mIntent = getIntent();
+        String unametag = mIntent.getStringExtra("user");
+        this.user= dbAccess.getUser(unametag);
 
         db.initializer();
         random = randomizer.nextInt(9);
@@ -162,6 +170,11 @@ public class GameActivity extends AppCompatActivity {
         }else{
             Intent finalView = new Intent(GameActivity.this, FinalActivity.class);
             finalView.putExtra("Puntuation", this.puntuacion);
+            this.user.setPuntuacion(this.puntuacion);
+            this.dbAccess.updateUser(this.user);
+            Toast.makeText(getApplicationContext(), "Tu puntuación, "+ this.user.getName()+" ha sido de "
+                    +this.puntuacion,
+                    Toast.LENGTH_LONG).show();
             finishAffinity();
             startActivity(finalView);
         }
