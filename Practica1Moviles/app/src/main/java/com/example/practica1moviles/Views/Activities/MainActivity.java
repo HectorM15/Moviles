@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.practica1moviles.Models.User;
+import com.example.practica1moviles.Models.database.DatabaseInitializer;
+import com.example.practica1moviles.Models.database.Questions.QuestionsDBAccess;
 import com.example.practica1moviles.Models.database.UserDBAccess;
 import com.example.practica1moviles.R;
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private User user;
     private UserDBAccess dbAccess;
 
+    private DatabaseInitializer db = new DatabaseInitializer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         String color = preferences.getString("color","");
         if (!color.isEmpty())
         changeColor(color);
+        db.dbQuestions=  QuestionsDBAccess.get(this);
+      //  db.initializer();
       //  Button btn_begin = findViewById(R.id.btnBeginGame);
     }
 
