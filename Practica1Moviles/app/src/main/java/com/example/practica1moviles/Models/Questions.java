@@ -1,13 +1,44 @@
 package com.example.practica1moviles.Models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity(tableName = "Question")
 public class Questions {
 
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name ="ID_QUESTIONS")
+    private int id;
+
+    @ColumnInfo(name = "DS_QUESTION")
     private String ds_question;
+
+    @ColumnInfo(name = "IT_ANSWERED")
     private Boolean it_answered;
+
+    @ColumnInfo(name = "NM_PUNTUACION")
     private Integer nm_puntuacion;
+
+    @ColumnInfo(name = "DS_QUESTION")
     private Boolean has_img;
 
+   // @Embedded
     public Answer [] arr_answer;
+
+
+    public Questions(@NonNull Integer id, String ds_question, Boolean it_answered, Integer nm_puntuacion, Boolean has_img) {
+        this.id=id;
+        this.ds_question = ds_question;
+        this.it_answered = it_answered;
+        this.nm_puntuacion = nm_puntuacion;
+        this.has_img = has_img;
+        this.arr_answer = new Answer[4];
+    }
+
 
     public Questions(String ds_question, Boolean it_answered, Integer nm_puntuacion, Boolean has_img) {
         this.ds_question = ds_question;
@@ -15,6 +46,16 @@ public class Questions {
         this.nm_puntuacion = nm_puntuacion;
         this.has_img = has_img;
         this.arr_answer = new Answer[4];
+    }
+
+
+    @NonNull
+    public int getId() {
+        return id;
+    }
+
+    public void setId(@NonNull int id) {
+        this.id = id;
     }
 
     public Boolean getHas_img() {

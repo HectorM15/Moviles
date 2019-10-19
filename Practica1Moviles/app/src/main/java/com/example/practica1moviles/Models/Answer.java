@@ -1,9 +1,45 @@
 package com.example.practica1moviles.Models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity(tableName = "Answers",
+        foreignKeys = @ForeignKey(entity = Questions.class,
+        parentColumns = "id",
+        childColumns = "id_question")
+)
 public class Answer {
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "ID_ANSWER")
+    private Integer id;
+
+    @Embedded
+    private Questions questions;
+
+    @ColumnInfo(name = "ID_QUESTIONS")
+    private Integer id_question;
+
+    @ColumnInfo (name = "DS_ANSWER")
     private String ds_answer;
+
+    @ColumnInfo (name = "IT_CORRECT")
     private Boolean it_correct;
+
+    @ColumnInfo (name = "IMG")
     private int img;
+
+    public Answer(@NonNull Integer id, Integer id_question, String ds_answer, Boolean it_correct) {
+        this.id = id;
+        this.id_question = id_question;
+        this.ds_answer = ds_answer;
+        this.it_correct = it_correct;
+    }
 
     public Answer(String ds_answer, Boolean it_correct) {
         this.ds_answer = ds_answer;
