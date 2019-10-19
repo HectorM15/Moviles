@@ -4,25 +4,25 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "Answers",
+@Entity(tableName = "Answer",
+        indices = {@Index(value = {"ID_ANSWER", "ID_QUESTION"},
+        unique = true)},
         foreignKeys = @ForeignKey(entity = Questions.class,
-        parentColumns = "id",
-        childColumns = "id_question")
-)
-public class Answer {
+        parentColumns = "ID_QUESTION",
+        childColumns = "ID_QUESTION",
+        onDelete = ForeignKey.CASCADE))
 
+public class Answer {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "ID_ANSWER")
     private Integer id;
 
-    @Embedded
-    private Questions questions;
-
-    @ColumnInfo(name = "ID_QUESTIONS")
+    @ColumnInfo(name = "ID_QUESTION")
     private Integer id_question;
 
     @ColumnInfo (name = "DS_ANSWER")
@@ -41,9 +41,26 @@ public class Answer {
         this.it_correct = it_correct;
     }
 
-    public Answer(String ds_answer, Boolean it_correct) {
+   /* public Answer(String ds_answer, Boolean it_correct) {
         this.ds_answer = ds_answer;
         this.it_correct = it_correct;
+    }*/
+
+    @NonNull
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId_question() {
+        return id_question;
+    }
+
+    public void setId_question(Integer id_question) {
+        this.id_question = id_question;
     }
 
     public int getImg() {

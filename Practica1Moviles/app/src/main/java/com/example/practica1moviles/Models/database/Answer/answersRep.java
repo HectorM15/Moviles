@@ -12,13 +12,13 @@ import java.util.List;
 @Dao
 interface answersRep {
 
-    @Query("SELECT * FROM Answers")
+    @Query("SELECT * FROM Answer")
     List<Answer> getAnswers();
 
-    @Query("SELECT * FROM Answers WHERE ID_ANSWER LIKE :id")
+    @Query("SELECT * FROM Answer WHERE ID_ANSWER LIKE :id")
     Answer getAnswers(Integer id);
 
-    @Query("SELECT * FROM Answers WHERE ID_QUESTIONS LIKE :id")
+    @Query("SELECT * FROM Answer WHERE ID_QUESTION LIKE :id")
     List<Answer> getAnswersByQuestions(Integer id);
 
     @Insert

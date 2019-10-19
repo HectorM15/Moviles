@@ -10,9 +10,9 @@ public class DatabaseInitializer {
 
     private Questions [] arr_questions = new Questions[9];
 
-    public void initializer(){
-
-        arr_questions[0] = new Questions("¿Cuál de las siguientes tiene más neuronas?",false,2,false);
+    public void initializer() {
+    }
+       /* arr_questions[0] = new Questions("¿Cuál de las siguientes tiene más neuronas?",false,2,false);
         arr_questions[1] = new Questions("¿Cuál fue el primer emperador romano de origen hispano?",false,2,false);
         arr_questions[2] = new Questions("¿Dónde se produce la respiración celular?",false,2,false);
         arr_questions[3] = new Questions("¿Cuánto mide el Everest?",false,2,false);
@@ -106,5 +106,5 @@ public class DatabaseInitializer {
 
     public void setArr_questions(Questions[] arr_questions) {
         this.arr_questions = arr_questions;
-    }
+    }*/
 }

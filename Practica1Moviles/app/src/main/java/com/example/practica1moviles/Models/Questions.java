@@ -3,15 +3,17 @@ package com.example.practica1moviles.Models;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "Question")
+@Entity(tableName = "Question",
+        indices = {@Index("ID_QUESTION")})
 public class Questions {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name ="ID_QUESTIONS")
+    @ColumnInfo(name ="ID_QUESTION")
     private int id;
 
     @ColumnInfo(name = "DS_QUESTION")
@@ -23,11 +25,10 @@ public class Questions {
     @ColumnInfo(name = "NM_PUNTUACION")
     private Integer nm_puntuacion;
 
-    @ColumnInfo(name = "DS_QUESTION")
+    @ColumnInfo(name = "HAS_IMG")
     private Boolean has_img;
 
-   // @Embedded
-    public Answer [] arr_answer;
+
 
 
     public Questions(@NonNull Integer id, String ds_question, Boolean it_answered, Integer nm_puntuacion, Boolean has_img) {
@@ -36,17 +37,17 @@ public class Questions {
         this.it_answered = it_answered;
         this.nm_puntuacion = nm_puntuacion;
         this.has_img = has_img;
-        this.arr_answer = new Answer[4];
+      //  this.arr_answer = new Answer[4];
     }
 
 
-    public Questions(String ds_question, Boolean it_answered, Integer nm_puntuacion, Boolean has_img) {
+ /*   public Questions(String ds_question, Boolean it_answered, Integer nm_puntuacion, Boolean has_img) {
         this.ds_question = ds_question;
         this.it_answered = it_answered;
         this.nm_puntuacion = nm_puntuacion;
         this.has_img = has_img;
         this.arr_answer = new Answer[4];
-    }
+    }*/
 
 
     @NonNull

@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity {
 
         db.initializer();
         random = randomizer.nextInt(9);
-        questions= db.getArr_questions();
+       // questions= db.getArr_questions();
         setQuestions(random);
         setAnswers(random);
 
@@ -111,10 +111,10 @@ public class GameActivity extends AppCompatActivity {
             RadioButton radioButton3 = (RadioButton) findViewById(R.id.rb_Answer3);
             RadioButton radioButton4 = (RadioButton) findViewById(R.id.rb_Answer4);
 
-            radioButton1.setText(questions[id].arr_answer[0].getDs_answer());
+          /*  radioButton1.setText(questions[id].arr_answer[0].getDs_answer());
             radioButton2.setText(questions[id].arr_answer[1].getDs_answer());
             radioButton3.setText(questions[id].arr_answer[2].getDs_answer());
-            radioButton4.setText(questions[id].arr_answer[3].getDs_answer());
+            radioButton4.setText(questions[id].arr_answer[3].getDs_answer());*/
 
         }
     }
@@ -128,14 +128,14 @@ public class GameActivity extends AppCompatActivity {
 
     private boolean checkCorrectAnswer(String selected,int id){
         questions[id].setIt_answered(true);
-        for (int i = 0; i < questions[id].arr_answer.length; i++) {
+     /*   for (int i = 0; i < questions[id].arr_answer.length; i++) {
             if (selected.equals(questions[id].arr_answer[i].getDs_answer()) && questions[id].arr_answer[i].getIt_correct()){
                 puntuacion+=questions[id].getNm_puntuacion();
                 Toast.makeText(getApplicationContext(), "Acertaste",
                         Toast.LENGTH_LONG).show();
                 return true;
             }
-        }
+        }*/
         puntuacion-=questions[id].getNm_puntuacion();
         Toast.makeText(getApplicationContext(), "Fallaste",
                 Toast.LENGTH_LONG).show();

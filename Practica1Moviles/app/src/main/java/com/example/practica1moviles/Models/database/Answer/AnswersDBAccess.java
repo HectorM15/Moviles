@@ -17,7 +17,7 @@ public class AnswersDBAccess {
 
     private AnswersDBAccess(Context context) {
         Context appcontext = context.getApplicationContext();
-        AnswersDatabase database = Room.databaseBuilder(appcontext,AnswersDatabase.class,"Answers")
+        AnswersDatabase database = Room.databaseBuilder(appcontext,AnswersDatabase.class,"Answer")
                 .allowMainThreadQueries().build();
         answersRep = database.getAnswersRep();
     }

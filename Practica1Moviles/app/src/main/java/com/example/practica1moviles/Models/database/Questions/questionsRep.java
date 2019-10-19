@@ -17,7 +17,7 @@ interface questionsRep {
     @Query("SELECT * FROM Question")
     List<Questions> getQuestions();
 
-    @Query("SELECT * FROM Question WHERE ID_QUESTIONS LIKE :id")
+    @Query("SELECT * FROM Question WHERE ID_QUESTION LIKE :id")
     Questions getQuestion(Integer id);
 
     @Insert
