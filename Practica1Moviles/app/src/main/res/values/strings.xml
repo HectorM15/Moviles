@@ -13,6 +13,8 @@
     <string name="login_nametag">Introduzca su usuario</string>
     <string name="login_password">Introduzca su contraseña</string>
 
+    <string name="btn_ranking">Ranking</string>
+
     <string-array name="colours">
         <item>Blanco</item>
         <item>Rojo</item>

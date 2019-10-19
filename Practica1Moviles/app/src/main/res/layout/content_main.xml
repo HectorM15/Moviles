@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:onClick="goToRanking"
-        android:text="@string/begin_game"
+        android:text="@string/btn_ranking"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Rankings" />
+        tools:text="@string/btn_ranking" />
 
     <TextView
         android:id="@+id/textView"

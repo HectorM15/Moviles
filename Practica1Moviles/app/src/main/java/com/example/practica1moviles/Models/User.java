@@ -61,9 +61,9 @@ public class User implements Comparable <User>  {
     @Override
     public int compareTo(User o) {
         if (this.puntuacion > o.getPuntuacion()){
-            return 1;
-        }else if (this.puntuacion < o.getPuntuacion()){
             return -1;
+        }else if (this.puntuacion < o.getPuntuacion()){
+            return 1;
         } else{
             return 0;
         }
