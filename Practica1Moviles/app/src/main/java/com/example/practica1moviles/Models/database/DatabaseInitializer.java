@@ -10,13 +10,17 @@ import com.example.practica1moviles.Models.database.Questions.QuestionsDatabase;
 import com.example.practica1moviles.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseInitializer {
 
     private Questions[] arr_questions = new Questions[9];
+    ArrayList<Answer> answerArrayList = new ArrayList<>();
     public QuestionsDBAccess dbQuestions;
     public AnswersDBAccess dbAnswers;
     public void initializer() {
+
+        List<Questions> a = dbQuestions.getQuestions();
         arr_questions[0] = new Questions(1, "¿Cuál de las siguientes tiene más neuronas?", false, 2, false);
         arr_questions[1] = new Questions(2, "¿Cuál fue el primer emperador romano de origen hispano?", false, 2, false);
         arr_questions[2] = new Questions(3, "¿Dónde se produce la respiración celular?", false, 2, false);
@@ -33,7 +37,7 @@ public class DatabaseInitializer {
 
             }
 
-        ArrayList<Answer> answerArrayList = new ArrayList<>();
+
         //PREGUNTA 1
         Answer answer_11 = new Answer(1, 1, "Gato", false);
         Answer answer_12 = new Answer(2, 1, "Banana", false);
@@ -44,7 +48,7 @@ public class DatabaseInitializer {
         Answer answer_21 = new Answer(5, 2, "Julio César", false);
         Answer answer_22 = new Answer(6, 2, "Calígula", false);
         Answer answer_23 = new Answer(7, 2, "Trajano", true);
-        Answer answer_24 = new Answer(8, 2, "Tibero Claudio Cesar", false);
+        Answer answer_24 = new Answer(8,2, "Tibero Claudio Cesar", false);
 
         //PREGUNTA 3
         Answer answer_31 = new Answer(9,3,"Lisosoma",false);
@@ -157,7 +161,7 @@ public class DatabaseInitializer {
         answerArrayList.add(answer_94);
         if (dbAnswers.getAnswers().size()<36)
             for (int i = 0; i <answerArrayList.size() ; i++) {
-                dbAnswers.addQuestions(answerArrayList.get(i));
+                dbAnswers.addAnswer(answerArrayList.get(i));
             }
 
     }

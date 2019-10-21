@@ -14,6 +14,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.practica1moviles.Models.Answer;
+import com.example.practica1moviles.Models.database.Answer.AnswersDBAccess;
+import com.example.practica1moviles.Models.database.Answer.AnswersDatabase;
 import com.example.practica1moviles.Models.database.DatabaseInitializer;
 import com.example.practica1moviles.Models.Questions;
 import com.example.practica1moviles.Models.User;
@@ -22,6 +25,7 @@ import com.example.practica1moviles.Models.database.Questions.QuestionsDatabase;
 import com.example.practica1moviles.Models.database.UserDBAccess;
 import com.example.practica1moviles.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,9 +35,12 @@ public class GameActivity extends AppCompatActivity {
     private UserDBAccess dbAccess;
     private RadioGroup rg_Ans;
     private List<Questions> questions;
+    private List<Answer> answer = new ArrayList<>();
+    private List<Answer> answerTotal = new ArrayList<>();
     private int random, num_question=0,puntuacion=0;
     private Random randomizer = new Random();
     private QuestionsDBAccess questionsDatabase;
+    private AnswersDBAccess answerDatabase;
     ConstraintLayout cl ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,9 @@ public class GameActivity extends AppCompatActivity {
 
         random = randomizer.nextInt(9);
         questionsDatabase =  QuestionsDBAccess.get(this);
+        answerDatabase =  AnswersDBAccess.get(this);
         questions= questionsDatabase.getQuestions();
+        answerTotal= answerDatabase.getAnswers();
         setQuestions(random);
         setAnswers(random);
 
@@ -111,11 +120,11 @@ public class GameActivity extends AppCompatActivity {
             RadioButton radioButton2 = (RadioButton) findViewById(R.id.rb_Answer2);
             RadioButton radioButton3 = (RadioButton) findViewById(R.id.rb_Answer3);
             RadioButton radioButton4 = (RadioButton) findViewById(R.id.rb_Answer4);
-
-          /*  radioButton1.setText(questions[id].arr_answer[0].getDs_answer());
-            radioButton2.setText(questions[id].arr_answer[1].getDs_answer());
-            radioButton3.setText(questions[id].arr_answer[2].getDs_answer());
-            radioButton4.setText(questions[id].arr_answer[3].getDs_answer());*/
+            answer=answerDatabase.getAnswersByQuestions(id);
+            radioButton1.setText(answer.get(0).getDs_answer());
+            radioButton2.setText(answer.get(1).getDs_answer());
+            radioButton3.setText(answer.get(2).getDs_answer());
+            radioButton4.setText(answer.get(3).getDs_answer());
 
         }
     }
@@ -129,14 +138,14 @@ public class GameActivity extends AppCompatActivity {
 
     private boolean checkCorrectAnswer(String selected,int id){
         questions.get(id).setIt_answered(true);
-     /*   for (int i = 0; i < questions[id].arr_answer.length; i++) {
-            if (selected.equals(questions[id].arr_answer[i].getDs_answer()) && questions[id].arr_answer[i].getIt_correct()){
-                puntuacion+=questions[id].getNm_puntuacion();
+        for (int i = 0; i < answerTotal.size(); i++) {
+            if (selected.equals(answerTotal.get(i).getDs_answer()) && answerTotal.get(i).getIt_correct()) {
+                puntuacion += questions.get(id).getNm_puntuacion();
                 Toast.makeText(getApplicationContext(), "Acertaste",
                         Toast.LENGTH_LONG).show();
                 return true;
             }
-        }*/
+        }
         puntuacion-=questions.get(id).getNm_puntuacion();
         Toast.makeText(getApplicationContext(), "Fallaste",
                 Toast.LENGTH_LONG).show();

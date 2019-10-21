@@ -10,11 +10,11 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "Answer",
         indices = {@Index(value = {"ID_ANSWER", "ID_QUESTION"},
-        unique = true)},
-        foreignKeys = @ForeignKey(entity = Questions.class,
+        unique = true)}
+       /*, foreignKeys = @ForeignKey(entity = Questions.class,
         parentColumns = "ID_QUESTION",
         childColumns = "ID_QUESTION",
-        onDelete = ForeignKey.CASCADE))
+        onDelete = ForeignKey.CASCADE)*/)
 
 public class Answer {
     @PrimaryKey
@@ -34,7 +34,7 @@ public class Answer {
     @ColumnInfo (name = "IMG")
     private int img;
 
-    public Answer(@NonNull Integer id, Integer id_question, String ds_answer, Boolean it_correct) {
+    public Answer(@NonNull Integer id, @NonNull Integer id_question, String ds_answer, Boolean it_correct) {
         this.id = id;
         this.id_question = id_question;
         this.ds_answer = ds_answer;

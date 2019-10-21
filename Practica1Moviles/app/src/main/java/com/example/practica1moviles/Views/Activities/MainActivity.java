@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         changeColor(color);
         db.dbQuestions=  QuestionsDBAccess.get(this);
         db.dbAnswers= AnswersDBAccess.get(this);
-//        db.initializer();
+        db.initializer();
       //  Button btn_begin = findViewById(R.id.btnBeginGame);
     }
 

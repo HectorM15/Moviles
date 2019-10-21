@@ -33,11 +33,15 @@ public class AnswersDBAccess {
         return answersRep.getAnswers();
     }
 
+    public List<Answer> getAnswersByQuestions(Integer i) {
+        return answersRep.getAnswersByQuestions(i);
+    }
+
     public Answer getAnswer(Integer id) {
         return answersRep.getAnswers(id);
     }
 
-    public void addQuestions(Answer questions) {
+    public void addAnswer(Answer questions) {
         answersRep.addAnswers(questions);
     }
 
