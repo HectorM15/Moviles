@@ -72,6 +72,8 @@ public class FinalActivity extends AppCompatActivity {
     }
 
     public void restart(View view){
-        startActivity(new Intent(FinalActivity.this, GameActivity.class));
+        Intent intent2 = new Intent (getApplicationContext(), GameActivity.class);
+        intent2.putExtra("user",this.user.getNametag());
+        startActivity(intent2);
     }
 }

@@ -180,6 +180,7 @@ public class GameActivity extends AppCompatActivity {
         }else{
             Intent finalView = new Intent(GameActivity.this, FinalActivity.class);
             finalView.putExtra("Puntuation", this.puntuacion);
+            finalView.putExtra("user",this.user.getNametag());
             this.user.setPuntuacion(this.puntuacion);
             this.dbAccess.updateUser(this.user);
             Toast.makeText(getApplicationContext(), "Tu puntuación, "+ this.user.getName()+" ha sido de "
