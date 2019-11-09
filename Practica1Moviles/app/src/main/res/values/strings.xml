@@ -15,6 +15,9 @@
 
     <string name="btn_ranking">Ranking</string>
 
+    <string name="music_txt">Activacion de Musica</string>
+
+
     <string-array name="colours">
         <item>Blanco</item>
         <item>Rojo</item>

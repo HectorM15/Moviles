@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +44,9 @@ public class GameActivity extends AppCompatActivity {
     private Random randomizer = new Random();
     private QuestionsDBAccess questionsDatabase;
     private AnswersDBAccess answerDatabase;
+    private SoundPool sp;
+    private int hitsound;
+    private MediaPlayer mp;
     ConstraintLayout cl ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +69,19 @@ public class GameActivity extends AppCompatActivity {
         setQuestions(random);
         setAnswers(random);
 
+        sp = new SoundPool(1, AudioManager.STREAM_MUSIC,1);
+
+        hitsound =sp.load (this,R.raw.correctanswer,1);
+
         SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String color = preferences.getString("color","");
+        String musica = preferences.getString("music","");
+
+        if (musica.equals("true")){
+            mp = MediaPlayer.create (this, R.raw.backgroundmusic);
+            mp.setLooping(true);
+            mp.start();
+        }
         if (!color.isEmpty())
             changeColor(color);
     }
@@ -141,6 +158,7 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < answerTotal.size(); i++) {
             if (selected.equals(answerTotal.get(i).getDs_answer()) && answerTotal.get(i).getIt_correct()) {
                 puntuacion += questions.get(id).getNm_puntuacion();
+                sp.play(hitsound,1,1,1,0,0);
                 Toast.makeText(getApplicationContext(), "Acertaste",
                         Toast.LENGTH_LONG).show();
                 return true;

@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import com.example.practica1moviles.R;
 
@@ -25,6 +27,20 @@ public class OptionsActivity extends AppCompatActivity implements AdapterView.On
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        Switch music = findViewById(R.id.music);
+        music.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                if (isChecked) {
+                    editor.putString("music","true");
+                } else {
+                    editor.putString("music","false");
+                }
+                editor.commit();
+            }
+        });
     }
 
     @Override
