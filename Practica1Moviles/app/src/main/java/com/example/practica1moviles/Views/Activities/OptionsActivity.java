@@ -3,6 +3,7 @@ package com.example.practica1moviles.Views.Activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.practica1moviles.R;
 
 public class OptionsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
 
+    private String musica;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,18 @@ public class OptionsActivity extends AppCompatActivity implements AdapterView.On
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        musica = preferences.getString("music","");
+
         Switch music = findViewById(R.id.music);
+
+
+        assert musica != null;
+        if (musica.equals("true")){
+            music.setOnCheckedChangeListener (null);
+            music.setChecked(true);
+        }
+
         music.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
@@ -41,6 +54,8 @@ public class OptionsActivity extends AppCompatActivity implements AdapterView.On
                 editor.commit();
             }
         });
+
+
     }
 
     @Override

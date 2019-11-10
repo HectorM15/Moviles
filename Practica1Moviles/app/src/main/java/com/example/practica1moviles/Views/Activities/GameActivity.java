@@ -47,6 +47,7 @@ public class GameActivity extends AppCompatActivity {
     private SoundPool sp;
     private int hitsound;
     private MediaPlayer mp;
+    private String musica;
     ConstraintLayout cl ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +76,9 @@ public class GameActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String color = preferences.getString("color","");
-        String musica = preferences.getString("music","");
+        musica = preferences.getString("music","");
 
+        assert musica != null;
         if (musica.equals("true")){
             mp = MediaPlayer.create (this, R.raw.backgroundmusic);
             mp.setLooping(true);
@@ -158,7 +160,9 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < answerTotal.size(); i++) {
             if (selected.equals(answerTotal.get(i).getDs_answer()) && answerTotal.get(i).getIt_correct()) {
                 puntuacion += questions.get(id).getNm_puntuacion();
-                sp.play(hitsound,1,1,1,0,0);
+                if (musica.equals("true")) {
+                    sp.play(hitsound,1,1,1,0,0);
+                }
                 Toast.makeText(getApplicationContext(), "Acertaste",
                         Toast.LENGTH_LONG).show();
                 return true;
@@ -189,6 +193,7 @@ public class GameActivity extends AppCompatActivity {
         return random;
     }
 
+
     private void goToNextQuestion(){
         random = getRandomQuestionNotAnswered();
 
@@ -206,6 +211,31 @@ public class GameActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
             finishAffinity();
             startActivity(finalView);
+        }
+    }
+
+    public void onStop () {
+        super.onStop();
+        if (musica.equals("true")) {
+            this.mp.stop();
+        }
+        finish();
+    }
+
+
+    public void onPause () {
+        super.onPause();
+        if (musica.equals("true")) {
+            this.mp.stop();
+        }
+        finish();
+    }
+
+
+    public void onResume () {
+        super.onResume();
+        if (musica.equals("true")) {
+            this.mp.start();
         }
     }
 
