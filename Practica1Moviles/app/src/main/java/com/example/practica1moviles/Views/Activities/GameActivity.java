@@ -44,8 +44,8 @@ public class GameActivity extends AppCompatActivity {
     private Random randomizer = new Random();
     private QuestionsDBAccess questionsDatabase;
     private AnswersDBAccess answerDatabase;
-    private SoundPool sp;
-    private int hitsound;
+    private SoundPool sp1,sp2;
+    private int hitsound,failsound;
     private MediaPlayer mp;
     private String musica;
     ConstraintLayout cl ;
@@ -70,9 +70,12 @@ public class GameActivity extends AppCompatActivity {
         setQuestions(random);
         setAnswers(random);
 
-        sp = new SoundPool(1, AudioManager.STREAM_MUSIC,1);
+        sp1 = new SoundPool(1, AudioManager.STREAM_MUSIC,1);
+        hitsound =sp1.load (this,R.raw.correctanswer,1);
 
-        hitsound =sp.load (this,R.raw.correctanswer,1);
+
+        sp2 = new SoundPool(1, AudioManager.STREAM_MUSIC,1);
+        failsound =sp2.load (this,R.raw.failsound,1);
 
         SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String color = preferences.getString("color","");
@@ -160,15 +163,14 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < answerTotal.size(); i++) {
             if (selected.equals(answerTotal.get(i).getDs_answer()) && answerTotal.get(i).getIt_correct()) {
                 puntuacion += questions.get(id).getNm_puntuacion();
-                if (musica.equals("true")) {
-                    sp.play(hitsound,1,1,1,0,0);
-                }
+                sp1.play(hitsound,1,1,1,0,0);
                 Toast.makeText(getApplicationContext(), "Acertaste",
                         Toast.LENGTH_LONG).show();
                 return true;
             }
         }
         puntuacion-=questions.get(id).getNm_puntuacion();
+        sp2.play(failsound,1,1,1,0,0);
         Toast.makeText(getApplicationContext(), "Fallaste",
                 Toast.LENGTH_LONG).show();
         return false;
