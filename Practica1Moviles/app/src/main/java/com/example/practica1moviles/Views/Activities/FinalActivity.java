@@ -29,7 +29,7 @@ import java.util.Date;
 
 public class FinalActivity extends AppCompatActivity {
 
-    private User user;
+    private User user ;
     private UserDBAccess dbAccess;
 
 
@@ -87,10 +87,11 @@ public class FinalActivity extends AppCompatActivity {
 
         userPicture.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+             /*   Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(takePictureIntent, 4);
-                }
+                }*/
+                dispatchTakePictureIntent(user.getName());
             }
         });
     }
