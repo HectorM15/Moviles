@@ -161,7 +161,8 @@ public class GameActivity extends AppCompatActivity {
     private boolean checkCorrectAnswer(String selected,int id){
         questions.get(id).setIt_answered(true);
         for (int i = 0; i < answerTotal.size(); i++) {
-            if (selected.equals(answerTotal.get(i).getDs_answer()) && answerTotal.get(i).getIt_correct()) {
+            if (selected.equals(answerTotal.get(i).getDs_answer()) && (answerTotal.get(i).getIt_correct()) &&
+            id == answerTotal.get(i).getId_question()) {
                 puntuacion += questions.get(id).getNm_puntuacion();
                 sp1.play(hitsound,1,1,1,0,0);
                 Toast.makeText(getApplicationContext(), "Acertaste",
