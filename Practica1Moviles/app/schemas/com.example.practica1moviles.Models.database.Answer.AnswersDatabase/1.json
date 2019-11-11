@@ -1,0 +1,120 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "0793f1856ec53c189f5ae73398985812",
+    "entities": [
+      {
+        "tableName": "Answer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID_ANSWER` INTEGER NOT NULL, `ID_QUESTION` INTEGER, `DS_ANSWER` TEXT, `IT_CORRECT` INTEGER, `IMG` INTEGER NOT NULL, PRIMARY KEY(`ID_ANSWER`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "ID_ANSWER",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_question",
+            "columnName": "ID_QUESTION",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ds_answer",
+            "columnName": "DS_ANSWER",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "it_correct",
+            "columnName": "IT_CORRECT",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img",
+            "columnName": "IMG",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "ID_ANSWER"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Answer_ID_ANSWER_ID_QUESTION",
+            "unique": true,
+            "columnNames": [
+              "ID_ANSWER",
+              "ID_QUESTION"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_Answer_ID_ANSWER_ID_QUESTION` ON `${TABLE_NAME}` (`ID_ANSWER`, `ID_QUESTION`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Question",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID_QUESTION` INTEGER NOT NULL, `DS_QUESTION` TEXT, `IT_ANSWERED` INTEGER, `NM_PUNTUACION` INTEGER, `HAS_IMG` INTEGER, PRIMARY KEY(`ID_QUESTION`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "ID_QUESTION",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ds_question",
+            "columnName": "DS_QUESTION",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "it_answered",
+            "columnName": "IT_ANSWERED",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nm_puntuacion",
+            "columnName": "NM_PUNTUACION",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "has_img",
+            "columnName": "HAS_IMG",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "ID_QUESTION"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Question_ID_QUESTION",
+            "unique": false,
+            "columnNames": [
+              "ID_QUESTION"
+            ],
+            "createSql": "CREATE  INDEX `index_Question_ID_QUESTION` ON `${TABLE_NAME}` (`ID_QUESTION`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"0793f1856ec53c189f5ae73398985812\")"
+    ]
+  }
+}

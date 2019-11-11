@@ -1,0 +1,66 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "dc57a5f559b3dddbfd1ccee0b9fb1c75",
+    "entities": [
+      {
+        "tableName": "Question",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID_QUESTION` INTEGER NOT NULL, `DS_QUESTION` TEXT, `IT_ANSWERED` INTEGER, `NM_PUNTUACION` INTEGER, `HAS_IMG` INTEGER, PRIMARY KEY(`ID_QUESTION`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "ID_QUESTION",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ds_question",
+            "columnName": "DS_QUESTION",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "it_answered",
+            "columnName": "IT_ANSWERED",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nm_puntuacion",
+            "columnName": "NM_PUNTUACION",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "has_img",
+            "columnName": "HAS_IMG",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "ID_QUESTION"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Question_ID_QUESTION",
+            "unique": false,
+            "columnNames": [
+              "ID_QUESTION"
+            ],
+            "createSql": "CREATE  INDEX `index_Question_ID_QUESTION` ON `${TABLE_NAME}` (`ID_QUESTION`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"dc57a5f559b3dddbfd1ccee0b9fb1c75\")"
+    ]
+  }
+}

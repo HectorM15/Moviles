@@ -21,6 +21,8 @@ interface answersRep {
     @Query("SELECT * FROM Answer WHERE ID_QUESTION LIKE :id")
     List<Answer> getAnswersByQuestions(Integer id);
 
+    @Query("SELECT IT_CORRECT FROM Answer WHERE ID_ANSWER = :id")
+    Boolean getAnswersCorrect(Integer id);
     @Insert
     void addAnswers(Answer question);
 
